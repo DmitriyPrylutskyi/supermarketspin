@@ -1,0 +1,30 @@
+.container {
+    border: 4px double #000;
+}
+
+.slot1, .slot2, .slot3, #shopcart, .item1, .item2, .item3 {
+    float:left;
+}
+
+.clear {
+    clear: both;
+}
+
+.coupon {
+    height: 40px;
+    text-align: center;
+}
+
+.spin {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.shopcartitems {
+   display: none;
+}
+
+.item1, .item2, .item3 {
+    width: 80px;
+    text-align: center;
+}
