@@ -29,7 +29,6 @@ function shuffleArray( array ) {
 
 // Images must be preloaded before they are used to draw into canvas
 function preloadImages( images, callback ) {
-
     function _preload( asset ) {
 	asset.img = new Image();
 	asset.img.src = 'img/' + asset.id+'.png';
@@ -52,7 +51,6 @@ function preloadImages( images, callback ) {
 	if ( images.length == loadc ) 
 	    return callback()
     }
-
     images.forEach(function(asset) {
 	_preload( asset );
     });
@@ -71,7 +69,7 @@ function SlotGame() {
 
     var game = new Game();
 
-    var items = [ 
+    var items = [
 	{id: 'energy-64'},
 	{id: 'staff-64'},
 	{id: 'cash-64'},
@@ -79,6 +77,13 @@ function SlotGame() {
 	{id: 'goods-64'},
 	{id: 'gold-64'}
     ];
+
+	//var items = [];
+
+	//$.get('server.php', function (result) {
+	//	items = result;
+	//	console.log (items);
+
 
     $('canvas').attr('height', IMAGE_HEIGHT * ITEM_COUNT * 2);
     $('canvas').css('height', IMAGE_HEIGHT * ITEM_COUNT * 2);
@@ -122,10 +127,13 @@ function SlotGame() {
 	game.resetOffset =  (ITEM_COUNT + 3) * SLOT_HEIGHT;
 	game.loop();
     });
+//		}
+//	);
 
     $('#spin').click(function(e) {
-	// start game on play button click
-	game.restart();
+		// start game on play button click
+		$('#spin').attr('disabled',true);
+		game.restart();
     });
 }
 
@@ -280,6 +288,8 @@ Game.prototype.update = function() {
 	break;
     case 6: // check results
 	var ec = 0;
+
+	$('#spin').attr('disabled',false);
 
 	$('#results').show();
 	if (that.items1[that.result1].id == 'gold-64') {
